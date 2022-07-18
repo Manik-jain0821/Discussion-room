@@ -1,0 +1,21 @@
+<!-- <head>About Us</head> -->
+<!-- <body>TABLE</body> -->
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>About us</h3>
+
+<p>hi i am manik,this is my site</p>
+
+<body>
+<br>
+<table>
+    <tr>
+        <th>Country-code</th>
+    </tr>
+    {% for item in li %}
+    <tr><td>{{item}}</td></tr>
+    {% endfor %}
+</table>
+</body>
+{% endblock %}

@@ -1,0 +1,643 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            transition: .1s;
+        }
+
+        .nav_top {
+            position: absolute;
+            display: inline-flex;
+            width: 100%;
+            height: 58px;
+            background-color: rgba(211, 203, 203, 0.301);
+            align-content: center;
+        }
+
+        .menu_bar {
+            position: fixed;
+            display: block;
+            margin-left: 8px;
+            margin-top: 5px;
+            margin-right: 5%;
+            border: .1px ridge rgb(240, 237, 237);
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            background-color: rgb(240, 237, 237);
+            font-size: 32px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .menu_bar:hover {
+            background-color: honeydew;
+            box-shadow: 0px 6px 12px rgba(3, 3, 3, 0.507);
+        }
+
+        .img1 {
+            width: 44px;
+            height: 44px;
+            margin-left: 2px;
+            background: transparent;
+            background-color: transparent;
+        }
+
+        .site_name {
+            cursor: pointer;
+            position: relative;
+            display: block;
+            margin: 2px 2px 15px 15px;
+            top: 5px;
+            font-size: 33px;
+            font-weight: 620;
+            color: rgb(114, 13, 114);
+        }
+
+        .img2 {
+            position: relative;
+            transform: rotateY(0deg) rotate(-20deg);
+            width: 28px;
+            height: 26px;
+            font-size: 28px;
+            padding: 0 10px 0 0;
+            margin-left: calc(15% + 5px);
+            margin-top: 15px;
+            color: white;
+        }
+        .addsign{
+            font-size: 38px;
+            right: 80px;
+            cursor: pointer;
+            margin: 0 8px;
+            position: fixed;
+            color: black;
+        }
+        .addsign:hover{
+            transition: .2s;
+            transform: scale(1.1);
+        }
+        .addcontent{
+            position: fixed;
+            right: 113px;
+            top: 44px;
+            background-color: white;
+            border: 1px ridge grey;
+            box-shadow: 0px 0px 5px grey;
+            display: none;
+            font-size: 17px;
+            transition: 1.8s;
+
+        }
+        .join_box{
+            width: 0px;
+            height: 0px;
+            /* width: 500px;
+            height: 300px; */
+            transition: .4s;
+            contain: content;
+            position: fixed;
+            z-index: 10;
+            background: whitesmoke;
+            border: 1px ridge black;
+            top: 250px;
+            left: 500px;
+        }
+        .boxclose{
+            position: fixed;
+            left: 95%;
+            cursor: pointer;
+            width: 15px;
+            height: 18px;
+            text-align: center;  
+            padding-bottom: 22px;  
+        }
+        .boxclose:hover{
+            transform: scale(1.2);
+            background-color: red;
+            color: white;
+            font-weight: 500;
+            /* transition: .5s; */
+        }
+        .mailsection{
+            border: 1px ridge grey;
+            padding: 10px;
+        }
+        .joininfo{
+            padding: 2px 10px;
+            margin-left: 15px;
+            display: flex;
+        }
+        .mailinfo{
+            padding: 2px 8px;
+            display: flex;
+        }
+        .joinavatar{
+            /* padding: 8px 5px 0 5px; */
+            margin: 5px 10px;
+            border-radius: 50%;
+            height: 45px;
+            width: 45px;
+            contain: content;
+            text-align: center;
+            background: rgb(126, 126, 177);
+            color: blue;
+        }
+        .joinavatar i{
+            font-size: 45px;
+            padding-top: 5px;
+        }
+        .joinclass,.createclass{
+            border-bottom: 1px ridge rgba(128, 128, 128, 0.603);
+            padding: 3px 8px 0 10px;
+            color: black;
+            font-weight: 500;
+        }
+        .nextinfo{
+            padding: 2px 8px 0 12px;
+        }
+        .joinname{
+            padding-top: 3px;
+            font-size: 17px;
+            font-weight: 500;
+        }
+        .joinmail{
+            font-size: 13px;
+            padding-top:7px ;
+            line-height: 1px;
+        }
+        .joinclass:hover, .createclass:hover{
+            background: rgba(202, 200, 200, 0.795);
+            cursor: pointer;
+        }
+
+        .inputcode{
+            padding: 10px 20px;
+            border: 1px ridge grey;
+        }
+        .classcode{
+            font-size: 20px;
+            font-weight: 500;
+            padding: 0px 5px;
+        }
+        .askteacher{
+            padding: 0 5px;
+        }
+        .inputcodesec{
+            margin-left: 30px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            display: flex;
+        }
+        .inputcodesec input{
+            padding: 10px 10px;
+            width: 330px;
+        }
+        .inputcodesec button{
+            padding: 0 0px;
+            width: 80px;
+            font-size: 20px;
+            font-weight: 600;
+            margin: 0 5px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        .inputcodesec button:hover{
+            transform: scale(1.05);
+            transition: .2s;
+            /* background-color: rgb(27, 126, 3); */
+        }
+        .profile {
+            right: calc(2% + 5px);
+            text-align: center;
+            height: 42px;
+            width: 42px;
+            /* padding: 5px 3px 8px 5px; */
+            cursor: pointer;
+            border-radius: 50%;
+            margin-top: 8px;
+            contain: content;
+            margin-bottom: 18px;
+            position: absolute;
+            font-size: 29px;
+            font-weight: 700;
+            font-family: sans-serif;
+            background-color: rgb(182, 50, 50);
+            color: white;
+        }
+
+        /* ----> NAVBAR _---> */
+        .navbar {
+            z-index: 100;
+            margin: 0;
+            padding: 15px 0;
+            position: fixed;
+            width: 0px;
+            transition: 0.7s;
+            position: fixed;
+            font-size: 20px;
+            box-shadow: 0px 6px 12px rgba(3, 3, 3, 0.507);
+            top: 58px;
+            height: calc(100% - 61px);
+            min-height: fit-content;
+            contain: content;
+            background-color: white;
+            display: block;
+        }
+
+        .nav_link i {
+            margin: 5px 5px 0 0;
+            font-size: 30px;
+        }
+
+        .nav_link h3 {
+            margin: 3px 5px 0 25px;
+            font-size: 30px;
+
+        }
+
+        .nav_link {
+            width: 85%;
+            margin: 0 5%;
+            padding: 5px 20px;
+            display: inline-flex;
+            contain: content;
+            color: rebeccapurple;
+            cursor: pointer;
+            border-radius: 30px;
+        }
+
+        .nav_link:hover {
+            background-color: rgb(207, 215, 231);
+        }
+
+        /* ----> COURSES ->>>>> */
+        .course_section {
+            /* display: inline-block; */
+            margin: 5px 0;
+        }
+
+        .course_course {
+            margin: 5px 12px 5px 40px;
+            color: rgb(72, 72, 167);
+            font-weight: 600;
+            font-size: 35px;
+            cursor: pointer;
+        }
+
+        .courses {
+            max-height: 195px;
+            contain: content;
+            padding: 5px 0;
+            overflow-y: auto;
+            /* box-shadow: -1px 1px 1px grey; */
+            border-bottom: 2px solid rgba(128, 128, 128, 0.438);
+            border-top: 1px ridge rgba(128, 128, 128, 0.438);
+        }
+
+        .courses::-webkit-scrollbar {
+            display: none;
+        }
+
+        .course {
+            padding: 3px 0;
+            max-height: 75px;
+            display: flex;
+            background-color: rgba(236, 230, 230, 0.226);
+            contain: content;
+        }
+
+        .course:hover {
+            background-color: rgb(207, 215, 231);
+
+        }
+
+        #profileImage {
+            width: 42px;
+            height: 42px;
+            cursor: pointer;
+            border-radius: 50%;
+            background: #512DA8;
+            font-size: 25px;
+            padding-top: 6px;
+            margin: 4px 10px;
+            color: #fff;
+            text-align: center;
+        }
+
+        .course_letter {
+            width: 60px;
+            contain: content;
+        }
+
+        .course_info {
+            width: 240px;
+            contain: content;
+            margin-left: 10px;
+            display: inline-block;
+        }
+
+        .course_name {
+            font-size: 14px;
+            max-height: 34px min-content;
+            font-weight: 600;
+            color: rgb(10, 10, 10);
+        }
+
+        .course_groupname {
+            margin-top: 3px;
+            font-size: 15px;
+            color: rgb(25, 25, 92);
+        }
+
+        .main {
+            top: 52px;
+            /* bottom: 20px; */
+            position: absolute;
+            /* margin-top: 53px; */
+            /* padding: 15px 35px; */
+            /* left: 50px;
+            right: 50px; */
+            /* margin-top: 20px;
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-bottom: 15px; */
+            /* border: 1px ridge grey; */
+            /* box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2); */
+        }
+
+        .nav_setting {
+            margin: 30px 0;
+            /* background-color: blue; */
+            display: flex;
+            padding: 10px 20px;
+        }
+
+        .nav_logout,
+        .nav_settings {
+            font-size: 30px;
+            margin: 0 25px;
+            padding: 3px 12px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .nav_settings:hover {
+            background-color: rgba(212, 212, 196, 0.61);
+            border-radius: 50%;
+            color: green;
+        }
+
+        .nav_logout:hover {
+            background-color: rgba(212, 212, 196, 0.61);
+            border-radius: 50%;
+            color: red;
+        }
+        .class_sec{
+            margin: 50px 15px;
+        }
+        .sec_class{
+            display: flex;
+            padding: auto;
+        }
+        .cards{
+            cursor: pointer;
+            margin: 10px 10px;
+            /* padding: 5px; */
+            border: 1px ridge rgb(192, 191, 191);
+            border-radius: 5px;
+            contain: content;
+            color: white;
+            text-shadow: thistle;
+            font-family: 'Google Sans',Roboto,Arial,sans-serif;;
+        }
+        .cards:hover{
+            box-shadow: 0px 6px 12px rgba(3, 3, 3, 0.507);
+            border: transparent;
+        }
+        .card_body{
+            /* padding: 5px; */
+            display: block;
+            /* margin: 0px 5px; */
+            width: 290px;
+            height: 110px; 
+            border: transparent;
+            background-color: rgb(15, 202, 130);
+            background-image: url(https://images.pexels.com/photos/1072179/pexels-photo-1072179.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+            background-size: cover;
+            opacity: .9;
+            backface-visibility:calc(.5);
+            /* border-radius: 10px; */
+        }
+        .name_course{
+            opacity: 1;
+            max-height: 50px;
+            contain: content;
+            min-height: 40px;
+            padding: 6px 8px;
+        }
+        .teacher_name{
+            height: 25px;
+            contain: content;
+            padding: 8px 8px;
+        }
+        .name_class{
+            max-height: 28px;
+            contain: content;
+            padding: 9px 8px 0px 8px;
+        }
+        .card_desc{
+            min-height: 150px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="nav_top">
+        <div class="menu_bar" id="menu_bar" onclick="navbar()">&#9776;
+            <!-- <img src="menu-bar.png" class="img1" alt="" > -->
+        </div>
+
+        <div class="img2"><i class="fa fa-book-open">&#128214;</i></div>
+        <div class="site_name" id="sitename" onclick="window.location.href='{{ url_for( 'index' ) }}'">Discussion Room</div>
+        <div class="addsign" onclick="addsign()" >+</div>
+        <div class="addcontent" id="addcontent">
+            <div class="joinclass" onclick="join_box()">Join Room</div>
+            <div class="createclass" onclick="window.location.href='{{ url_for( 'create_class' ) }}'">Create Room</div>
+        </div>
+        <div class="join_box" id="join_box">
+            <div class="mailsection">
+                <div class="boxclose" onclick="join_box()">X</div>
+                <div class="joininfo">You are signed in as</div>
+                <div class="mailinfo">
+                    <div class="joinavatar"> <i class="fa fa-user" aria-hidden="true"></i></div>
+                    <div class="nextinfo">
+                        <div class="joinname">{{fname.upper()}}</div>
+                        <div class="joinmail">{{email}}</div>
+                    </div>
+                </div>
+            </div>
+            <form action="" onsubmit="" method="get">
+            <div class="inputcode">
+                <div class="classcode">Room code</div>
+                <div class="askteacher">Ask Admin for the room code, then enter it here.</div>
+                <div class="inputcodesec">
+                    <input type="text" class="codeinp" name="joincode" id="joincode" placeholder="Join-code"><button type="submit">Join</button>
+                </div>
+            </div>
+            </form>
+        </div>
+        <div class="profile" onclick="window.location.href='{{ url_for( 'change_profile' ) }}'">{{fname[0].upper()}}</div>
+    </div>
+    <div class="navbar" id="navbar">
+        <!-- <div class="nav_title">Navbar</div>-->
+        <div class="nav_links">
+            <div class="nav_link" onclick="window.location.href='{{ url_for( 'index' ) }}'">
+                <i class="fa fa-home"></i>
+                <h3>Home</h3>
+            </div>
+            <div class="nav_link" onclick="window.location.href='{{ url_for( 'add_stud' ) }}'">
+                <i class="fa fa-home"></i>
+                <h3>Rooms</h3>
+            </div>
+
+        </div>
+        <hr>
+        <div class="course_section">
+            <div class="course_course">
+                Rooms
+            </div>
+            <div class="courses">
+                {% for course in classes %}
+                <div class="course">
+                    <div class="course_letter">
+                        <!-- <span style="display: none;" id="firstName">Kalpesh</span> -->
+                        <div id="profileImage">{{course.class_name[0].upper()}}</div>
+                    </div>
+                    <div class="course_info">
+                        <div class="course_name">{{course.class_name}}
+                            <!-- UG CSBS 2nd year computer vsnd hjdhjj g jg hg -->
+                        </div>
+                        <div class="course_groupname">{{course.course.upper()}}</div>
+                    </div>
+                </div>
+            {% endfor %}
+
+            </div>
+        </div>
+        <div class="nav_setting">
+            <div class="nav_logout" onclick="window.location.href='{{ url_for( 'logout' ) }}'"><i class="fa fa-sign-out"></i>
+                <h6>Logout</h6>
+            </div>
+            <div class="nav_settings"onclick="window.location.href='{{ url_for( 'change_profile' ) }}'"><i class="fa fa-cogs"></i>
+                <h6>Settings</h6>
+            </div>
+        </div>
+    </div>
+
+    <!-- navbar -->
+
+    <!-- classes-->
+    <div class="main" id="main">
+        <div class="class_sec">
+            <div class="sec_class">
+            {% for course in classes %}
+                <form action="" method="get" id="{{course.class_name}}" onclick="annc(id)">
+                <div class="cards" >
+                    <input type="hidden"  name="code" id="code" value="{{course.join_code}}">
+                    <div class="card_body"> 
+                        <div class="name_course"><h5>{{course.class_name }}</h5></div>
+                        <div class="teacher_name"><h6>{{course.teacher}}</h6></div>
+                        <div class="name_class"><h6>{{course.course.upper()}}</h6></div>        
+                    </div>
+                    <div class="card_desc">
+                        <!-- <h5>this is useless</h5> -->
+                    </div>
+                    <button type="submit" style="display: none;" id="codeanc"></button>
+                </div></form>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <script>
+
+        // $(document).ready(function(){
+        //   var firstName = $('#firstName').text();
+        //   // var lastName = $('#lastName').text();
+        //   var intials = $('#firstName').text().charAt(0);
+        //   var profileImage = $('#profileImage').text(intials);
+        // });
+
+        function navbar() {
+            var x = document.getElementById("navbar")
+            var y = document.getElementById("main")
+
+            if (x.style.width == "320px") {
+                x.style.width = "0";
+                y.style.opacity = 1;
+                return
+            }
+            if (x.style.width = "0") {
+                x.style.width = "320px";
+                y.style.opacity = 0.4;
+                return
+            }
+        }
+        function addsign() {
+            var x = document.getElementById("addcontent");
+            if (x.style.display == 'none'){
+            x.style.display= "block";
+            return
+            }
+            if (x.style.display = "block"){
+                x.style.display = "none";
+                return
+            }
+        }
+        function join_box() {
+            var x = document.getElementById("join_box");
+            
+            if (x.style.width != "500px") {
+                x.style.width = "500px";
+                x.style.height = "300px";
+                addsign();
+                return;
+            }
+            if (x.style.width != "0px") {
+                x.style.width = "0px"; 
+                x.style.height = "0px";
+                return
+            }
+            
+        }
+        function annc(id) {
+            var form = document.getElementById(id);
+        form.submit();
+        // alert("Your Message Sent");
+        
+        }
+    </script>
+
+</body>
+
+</html>
